@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "buscaavl",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["main.py"],
+      "env": { "BUSCAAVL_SEM_NAVEGADOR": "1" },
+      "port": 5000
+    }
+  ]
+}

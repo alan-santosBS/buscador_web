@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% from "_macros.html" import desenhar_arvore %}
+{% block titulo %}Árvore do índice — BuscaAVL{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-pagina">
+  <div>
+    <h1>Árvore AVL do índice invertido</h1>
+    <p>Cada nó é uma palavra. Menores (ordem alfabética) à esquerda, maiores à direita. Clique num nó para descer a partir dele.</p>
+  </div>
+</div>
+
+<div class="metricas">
+  <div class="metrica"><span class="numero">{{ stats.palavras }}</span><span class="rotulo">nós (palavras)</span></div>
+  <div class="metrica"><span class="numero">{{ stats.altura }}</span><span class="rotulo">altura da árvore</span></div>
+  <div class="metrica"><span class="numero">{{ stats.paginas }}</span><span class="rotulo">páginas</span></div>
+  <div class="metrica"><span class="numero">{{ stats.rotacoes }}</span><span class="rotulo">rotações feitas</span></div>
+</div>
+
+<form class="barra-arvore" method="get">
+  <div class="campo"><label for="destacar">Buscar palavra (mostra o caminho)</label>
+    <input type="text" id="destacar" name="destacar" value="{{ destacar }}" placeholder="ex.: python"></div>
+  <div class="campo"><label for="raiz">Começar a partir de</label>
+    <input type="text" id="raiz" name="raiz" value="{{ request.args.get('raiz', '') }}" placeholder="raiz"></div>
+  <div class="campo"><label for="profundidade">Níveis</label>
+    <select id="profundidade" name="profundidade">
+      {% for n in range(2, 8) %}<option value="{{ n }}" {{ 'selected' if n == profundidade }}>{{ n }}</option>{% endfor %}
+    </select></div>
+  <button class="botao primario" type="submit">Mostrar</button>
+  <a class="botao" href="{{ url_for('ver_arvore') }}">Voltar à raiz</a>
+</form>
+
+{% if destacar %}
+  <div class="cartao" style="margin-bottom:1rem">
+    <strong>Caminho de “{{ destacar }}”:</strong>
+    <div class="caminho">
+      {% for chave in caminho %}
+        <span class="passo {{ ('final' if encontrado else 'falhou') if loop.last }}">{{ chave }}</span>
+        {% if not loop.last %}<span class="seta">→</span>{% endif %}
+      {% endfor %}
+    </div>
+    {{ ('Encontrada em ' ~ caminho|length ~ ' comparação(ões).') if encontrado else 'Não está no índice: a busca chegou a um galho vazio.' }}
+    {% if caminho|length > profundidade %}<br><span class="dica">O caminho tem mais níveis que os exibidos — aumente “Níveis”.</span>{% endif %}
+  </div>
+{% endif %}
+
+{{ desenhar_arvore(desenho, clicavel=true, profundidade=profundidade) }}
+{% endblock %}

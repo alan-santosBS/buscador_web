@@ -1,0 +1,59 @@
+{# ============================================================
+   Macros = "funções" de template reaproveitadas em várias telas
+   ============================================================ #}
+
+{# Caixa de busca com autocompletar (usada na inicial e nos resultados) #}
+{% macro caixa_busca(valor='', modo='todas', compacta=false) %}
+<form class="form-busca {{ 'compacta' if compacta }}" action="{{ url_for('buscar') }}" method="get" autocomplete="off">
+  <div class="caixa-busca">
+    <input type="text" name="q" value="{{ valor }}" placeholder="Pesquise por palavras-chave…" aria-label="Busca" {{ 'autofocus' if not compacta }} data-autocompletar>
+    <button class="botao-busca" type="submit">Buscar</button>
+    <ul class="sugestoes"></ul>
+  </div>
+  <div class="modos">
+    <label><input type="radio" name="modo" value="todas" {{ 'checked' if modo != 'qualquer' }}> Todas as palavras</label>
+    <label><input type="radio" name="modo" value="qualquer" {{ 'checked' if modo == 'qualquer' }}> Qualquer palavra</label>
+  </div>
+</form>
+{% endmacro %}
+
+{# Desenho da árvore em SVG a partir do que o VisualizadorArvore calculou #}
+{% macro desenhar_arvore(d, clicavel=false, profundidade=4) %}
+<div class="painel-arvore">
+  {% if not d.nos %}
+    <p class="vazio">A árvore está vazia.</p>
+  {% else %}
+  <svg width="{{ d.largura }}" height="{{ d.altura }}" viewBox="0 0 {{ d.largura }} {{ d.altura }}" role="img" aria-label="Árvore AVL">
+    {% for a in d.arestas %}
+      <line class="aresta {{ 'destaque' if a.destaque }}" x1="{{ a.x1 }}" y1="{{ a.y1 }}" x2="{{ a.x2 }}" y2="{{ a.y2 }}"/>
+    {% endfor %}
+    {% for n in d.nos %}
+      {% set classes = 'no fb-' ~ n.fb ~ (' destaque' if n.destaque else '') ~ (' raiz' if n.chave == d.raiz else '') %}
+      {% if clicavel %}<a class="no-link" href="{{ url_for('ver_arvore', raiz=n.chave, profundidade=profundidade) }}">{% endif %}
+      <g class="{{ classes }}">
+        <title>{{ n.chave }} — altura {{ n.altura }}, fator de balanceamento {{ n.fb }}{% if n.qtd is not none %}, aparece em {{ n.qtd }} página(s){% endif %}</title>
+        <circle cx="{{ n.x }}" cy="{{ n.y }}" r="{{ d.raio }}"/>
+        <text class="rotulo" x="{{ n.x }}" y="{{ n.y }}">{{ n.rotulo }}</text>
+        <text class="info" x="{{ n.x }}" y="{{ n.y + d.raio + 13 }}">h{{ n.altura }} · fb {{ '%+d'|format(n.fb) if n.fb else '0' }}</text>
+        {% if n.oculto %}<text class="mais" x="{{ n.x }}" y="{{ n.y + d.raio + 28 }}">⋯</text>{% endif %}
+      </g>
+      {% if clicavel %}</a>{% endif %}
+    {% endfor %}
+  </svg>
+  {% endif %}
+</div>
+<script>
+  // centraliza a rolagem horizontal na raiz (o desenho pode ser mais largo que a tela)
+  document.querySelectorAll(".painel-arvore").forEach((p) => {
+    const raiz = p.querySelector(".no.raiz circle");
+    if (raiz) p.scrollLeft = raiz.cx.baseVal.value - p.clientWidth / 2;
+  });
+</script>
+<div class="legenda">
+  <span><i class="bolinha"></i> balanceado (fb = 0)</span>
+  <span><i class="bolinha ambar"></i> pende para um lado (fb = ±1)</span>
+  <span><i class="bolinha verde"></i> caminho percorrido na busca</span>
+  <span>h = altura do nó · fb = altura(esq) − altura(dir)</span>
+  {% if clicavel %}<span>⋯ = há mais níveis abaixo (clique no nó)</span>{% endif %}
+</div>
+{% endmacro %}

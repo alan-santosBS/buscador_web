@@ -1,0 +1,1 @@
+from .armazenamento import ArmazenamentoJSON

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from "_macros.html" import caixa_busca %}
+{% block conteudo %}
+<section class="inicio">
+  <h1 class="logo-grande"><span class="l1">B</span><span class="l2">u</span><span class="l3">s</span><span class="l4">c</span><span class="l5">a</span><span class="l6">AVL</span></h1>
+  <p class="subtitulo">Buscador web com índice próprio em Árvore AVL</p>
+  {{ caixa_busca() }}
+  <div class="estatisticas-inicio">
+    <span><strong>{{ stats.paginas }}</strong> páginas indexadas</span>
+    <span><strong>{{ stats.palavras }}</strong> palavras na árvore</span>
+    <span>altura da árvore: <strong>{{ stats.altura }}</strong></span>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/autocompletar.js') }}"></script>{% endblock %}

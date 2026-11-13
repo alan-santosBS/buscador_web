@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}BuscaAVL{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+  {# Cabeçalho com o menu: aparece em todas as telas #}
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a class="marca" href="{{ url_for('inicio') }}">Busca<span>AVL</span></a>
+      <nav class="menu">
+        {% set ep = request.endpoint %}
+        <a href="{{ url_for('inicio') }}" class="{{ 'ativo' if ep in ('inicio', 'buscar') }}">Buscar</a>
+        <a href="{{ url_for('paginas') }}" class="{{ 'ativo' if ep in ('paginas', 'nova_pagina', 'editar_pagina', 'detalhes') }}">Páginas</a>
+        <a href="{{ url_for('painel_crawler') }}" class="{{ 'ativo' if ep == 'painel_crawler' }}">Crawler</a>
+        <a href="{{ url_for('ver_arvore') }}" class="{{ 'ativo' if ep == 'ver_arvore' }}">Árvore do índice</a>
+        <a href="{{ url_for('ver_laboratorio') }}" class="{{ 'ativo' if ep == 'ver_laboratorio' }}">Laboratório AVL</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    {% for categoria, texto in get_flashed_messages(with_categories=true) %}
+      <div class="mensagem {{ categoria }}">{{ texto }}</div>
+    {% endfor %}
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

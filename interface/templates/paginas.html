@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block titulo %}Páginas — BuscaAVL{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-pagina">
+  <div>
+    <h1>Páginas indexadas</h1>
+    <p>{{ paginas|length }} páginas guardadas na AVL por id (e numa segunda AVL por URL).</p>
+  </div>
+  <div class="grupo-botoes">
+    <form method="post" action="{{ url_for('restaurar_exemplo') }}" onsubmit="return confirm('Substituir tudo pelos dados de exemplo?')">
+      <button class="botao" type="submit">Restaurar dados de exemplo</button>
+    </form>
+    <a class="botao primario" href="{{ url_for('nova_pagina') }}">+ Nova página</a>
+  </div>
+</div>
+
+<div class="cartao tabela-wrap">
+  <table>
+    <thead><tr><th>Id</th><th>Título</th><th>URL</th><th>Origem</th><th>Indexada em</th><th></th></tr></thead>
+    <tbody>
+    {% for p in paginas %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td><a href="{{ url_for('detalhes', id_pagina=p.id) }}">{{ p.titulo }}</a></td>
+        <td class="url-celula" title="{{ p.url }}">{{ p.url }}</td>
+        <td><span class="etiqueta {{ 'ambar' if p.origem == 'crawler' }}">{{ p.origem }}</span></td>
+        <td>{{ p.data_indexacao }}</td>
+        <td style="white-space:nowrap">
+          <a class="botao pequeno" href="{{ url_for('editar_pagina', id_pagina=p.id) }}">Editar</a>
+          <form method="post" action="{{ url_for('remover_pagina', id_pagina=p.id) }}" onsubmit="return confirm('Remover “{{ p.titulo|e }}” do índice?')">
+            <button class="botao pequeno perigo" type="submit">Remover</button>
+          </form>
+        </td>
+      </tr>
+    {% else %}
+      <tr><td colspan="6" class="vazio">Nenhuma página. Cadastre uma ou rode o crawler.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

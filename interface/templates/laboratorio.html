@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "_macros.html" import desenhar_arvore %}
+{% block titulo %}Laboratório AVL — BuscaAVL{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-pagina">
+  <div>
+    <h1>Laboratório AVL</h1>
+    <p>Uma árvore pequena, separada do índice, para ver as rotações acontecerem. Use números ou palavras (separados por espaço).</p>
+  </div>
+</div>
+
+<div class="cartao" style="margin-bottom:1rem">
+  <form method="post" class="barra-arvore">
+    <div class="campo"><label for="chaves">Chaves</label>
+      <input type="text" id="chaves" name="chaves" placeholder="ex.: 10 20 30" autofocus></div>
+    <button class="botao primario" name="acao" value="inserir">Inserir</button>
+    <button class="botao" name="acao" value="remover">Remover</button>
+    <button class="botao perigo" name="acao" value="limpar" formnovalidate>Limpar</button>
+  </form>
+  <form method="post" class="grupo-botoes">
+    <input type="hidden" name="acao" value="exemplo">
+    {% for chave, exemplo in lab.EXEMPLOS.items() %}
+      <button class="botao pequeno" name="exemplo" value="{{ chave }}" title="insere: {{ exemplo[1] }}">{{ exemplo[0] }}</button>
+    {% endfor %}
+  </form>
+</div>
+
+{% if lab.mensagens %}
+<ul class="mensagens-lab">
+  {% for tipo, texto in lab.mensagens %}<li class="{{ tipo }}">{{ texto }}</li>{% endfor %}
+</ul>
+{% endif %}
+
+<div class="metricas">
+  <div class="metrica"><span class="numero">{{ chaves|length }}</span><span class="rotulo">nós</span></div>
+  <div class="metrica"><span class="numero">{{ lab.arvore.altura() }}</span><span class="rotulo">altura</span></div>
+  <div class="metrica"><span class="numero">{{ lab.arvore.rotacoes }}</span><span class="rotulo">rotações</span></div>
+  <div class="metrica"><span class="numero" style="font-size:1rem">{{ chaves|join(' ') or '—' }}</span><span class="rotulo">percurso em-ordem (já sai ordenado)</span></div>
+</div>
+
+{{ desenhar_arvore(desenho) }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}{{ 'Editar' if pagina else 'Nova' }} página — BuscaAVL{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-pagina">
+  <div>
+    <h1>{{ 'Editar página #' ~ pagina.id if pagina else 'Cadastrar nova página' }}</h1>
+    <p>{{ 'Ao salvar, as palavras antigas saem da árvore e as novas entram.' if pagina else 'O texto será dividido em palavras e cada uma entra no índice (árvore AVL).' }}</p>
+  </div>
+</div>
+
+<form class="cartao formulario" method="post">
+  <div class="campo">
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" required value="{{ form.titulo or (pagina.titulo if pagina) or '' }}">
+    <small>Palavras do título valem 3× mais na relevância.</small>
+  </div>
+  <div class="campo">
+    <label for="url">URL</label>
+    <input type="text" id="url" name="url" required placeholder="https://..." value="{{ form.url or (pagina.url if pagina) or '' }}">
+  </div>
+  <div class="campo">
+    <label for="conteudo">Conteúdo</label>
+    <textarea id="conteudo" name="conteudo" required>{{ form.conteudo or (pagina.conteudo if pagina) or '' }}</textarea>
+  </div>
+  <div class="campo">
+    <label for="palavras_chave">Palavras-chave</label>
+    <input type="text" id="palavras_chave" name="palavras_chave" placeholder="separadas por vírgula" value="{{ form.palavras_chave or (pagina.palavras_chave|join(', ') if pagina) or '' }}">
+    <small>Valem 5× mais na relevância.</small>
+  </div>
+  <div class="grupo-botoes">
+    <button class="botao primario" type="submit">{{ 'Salvar alterações' if pagina else 'Cadastrar e indexar' }}</button>
+    <a class="botao" href="{{ url_for('paginas') }}">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titulo %}{{ pagina.titulo }} — BuscaAVL{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-pagina">
+  <div>
+    <h1>{{ pagina.titulo }}</h1>
+    <p><a href="{{ pagina.url }}" target="_blank" rel="noopener">{{ pagina.url }}</a> · id {{ pagina.id }} · {{ pagina.origem }} · {{ pagina.data_indexacao }}</p>
+  </div>
+  <div class="grupo-botoes">
+    <a class="botao" href="{{ url_for('editar_pagina', id_pagina=pagina.id) }}">Editar</a>
+  </div>
+</div>
+
+<div class="cartao">
+  <h2>Conteúdo</h2>
+  <p>{{ pagina.conteudo }}</p>
+  {% if pagina.palavras_chave %}<p><strong>Palavras-chave:</strong> {{ pagina.palavras_chave|join(', ') }}</p>{% endif %}
+</div>
+
+<div class="cartao">
+  <h2>O que foi para o índice ({{ frequencias|length }} palavras)</h2>
+  <p class="dica">Texto após o tokenizador (minúsculas, sem acento, sem stopwords). O número é o peso da palavra nesta página
+    (título conta 3×, palavra-chave 5×). Clique para ver a palavra na árvore.</p>
+  <div class="palavras-freq">
+    {% for palavra, peso in frequencias %}
+      <a class="etiqueta {{ 'azul' if peso > 2 }}" href="{{ url_for('ver_arvore', destacar=palavra) }}">{{ palavra }} <b>{{ peso }}</b></a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

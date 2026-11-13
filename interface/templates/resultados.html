@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% from "_macros.html" import caixa_busca %}
+{% block titulo %}{{ r.consulta }} — BuscaAVL{% endblock %}
+{% block conteudo %}
+{{ caixa_busca(r.consulta, r.modo, compacta=true) }}
+
+<p class="info-busca">
+  {{ r.resultados|length }} resultado(s) em {{ '%.3f'|format(r.tempo_ms) }} ms
+  · modo: {{ 'todas as palavras' if r.modo != 'qualquer' else 'qualquer palavra' }}
+  {% if r.termos %}· termos buscados: {% for t in r.termos %}<code>{{ t }}</code>{{ ', ' if not loop.last }}{% endfor %}{% endif %}
+</p>
+
+<div class="layout-resultados">
+  <section>
+    {% if r.termos_ausentes %}
+      <div class="mensagem erro">Não encontrado no índice: {{ r.termos_ausentes|join(', ') }}</div>
+    {% endif %}
+
+    {% for res in r.resultados %}
+      <article class="resultado">
+        <div class="url">{{ res.pagina.url }}</div>
+        <h3><a href="{{ res.pagina.url }}" target="_blank" rel="noopener">{{ res.pagina.titulo }}</a></h3>
+        <p class="trecho">{% for texto, marcar in res.trecho %}{% if marcar %}<mark>{{ texto }}</mark>{% else %}{{ texto }}{% endif %}{% endfor %}</p>
+        <div class="meta">
+          <span class="etiqueta azul">relevância {{ '%.2f'|format(res.pontuacao) }}</span>
+          <span class="etiqueta verde">contém: {{ res.termos_encontrados|join(', ') }}</span>
+          <span class="etiqueta {{ 'ambar' if res.pagina.origem == 'crawler' }}">{{ res.pagina.origem }}</span>
+          <a class="etiqueta" href="{{ url_for('detalhes', id_pagina=res.pagina.id) }}">detalhes</a>
+        </div>
+      </article>
+    {% else %}
+      <div class="vazio">
+        <h2>Nenhuma página encontrada</h2>
+        {% if r.modo != 'qualquer' and r.termos|length > 1 %}
+          <p>Nenhuma página tem <em>todas</em> as palavras.
+            <a href="{{ url_for('buscar', q=r.consulta, modo='qualquer') }}">Tentar com qualquer palavra</a>.</p>
+        {% else %}
+          <p>Tente outras palavras ou indexe mais páginas pelo crawler.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+
+  <aside>
+    <div class="cartao">
+      <h2>Como a AVL encontrou</h2>
+      <p class="dica">Cada termo é procurado na árvore a partir da raiz: menor → esquerda, maior → direita.
+        A árvore tem {{ stats.palavras }} palavras e altura {{ stats.altura }}, então nenhuma busca passa de {{ stats.altura }} comparações.</p>
+      {% for termo, caminho in caminhos.items() %}
+        <strong><code>{{ termo }}</code></strong> — {{ caminho|length }} comparação(ões)
+        <div class="caminho">
+          {% for chave in caminho %}
+            <span class="passo {{ ('final' if chave == termo else 'falhou') if loop.last }}">{{ chave }}</span>
+            {% if not loop.last %}<span class="seta">→</span>{% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+      {% if r.termos %}
+        <a class="botao pequeno" href="{{ url_for('ver_arvore', destacar=r.termos[0]) }}">Ver caminho de “{{ r.termos[0] }}” na árvore</a>
+      {% endif %}
+    </div>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/autocompletar.js') }}"></script>{% endblock %}
