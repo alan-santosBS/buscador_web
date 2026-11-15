@@ -1,289 +1,88 @@
 [
   {
     "id": 1,
-    "url": "https://exemplo.com.br/python-introducao",
-    "titulo": "Introdução à linguagem Python",
-    "conteudo": "Python é uma linguagem de programação de alto nível, interpretada e de tipagem dinâmica. É muito usada em ciência de dados, automação, desenvolvimento web e ensino de programação, porque tem uma sintaxe simples e legível. Python suporta orientação a objetos, programação funcional e possui uma biblioteca padrão muito completa.",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/index.html",
+    "titulo": "Guia Turístico de Pernambuco",
+    "conteudo": "Guia Turístico de Pernambuco Bem-vindo ao guia de viagem de Pernambuco, estado do Nordeste brasileiro com praias, história, frevo e uma culinária marcante. Recife, a Veneza brasileira Olinda, patrimônio histórico Porto de Galinhas e suas piscinas naturais Fernando de Noronha Culinária pernambucana",
     "palavras_chave": [
-      "python",
-      "programação",
-      "linguagem"
+      "pernambuco",
+      "turismo",
+      "viagem",
+      "nordeste"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:00"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   },
   {
     "id": 2,
-    "url": "https://exemplo.com.br/arvore-avl",
-    "titulo": "Árvore AVL: a árvore binária que se equilibra sozinha",
-    "conteudo": "A árvore AVL foi criada por Adelson-Velsky e Landis em 1962. É uma árvore binária de busca em que a diferença de altura entre as subárvores esquerda e direita de qualquer nó é no máximo 1. Quando uma inserção ou remoção quebra essa regra, a árvore faz rotações simples ou duplas para se rebalancear. Com isso, busca, inserção e remoção custam O(log n).",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/recife.html",
+    "titulo": "Recife, a Veneza brasileira",
+    "conteudo": "Recife Recife é a capital de Pernambuco e é chamada de Veneza brasileira por causa dos rios Capibaribe e Beberibe e das muitas pontes que cortam a cidade. O Marco Zero, o bairro do Recife Antigo e o Porto Digital, polo de tecnologia e inovação, são passeios obrigatórios. A praia de Boa Viagem tem um longo calçadão para caminhar. Veja também: Olinda , vizinha de Recife, e a culinária local . Voltar ao guia",
     "palavras_chave": [
-      "avl",
-      "árvore",
-      "balanceamento",
-      "rotação"
+      "recife",
+      "capital",
+      "pontes",
+      "marco zero"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:05"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   },
   {
     "id": 3,
-    "url": "https://exemplo.com.br/arvore-binaria-de-busca",
-    "titulo": "Árvore binária de busca",
-    "conteudo": "Na árvore binária de busca, cada nó possui no máximo dois filhos. Os valores menores ficam na subárvore da esquerda e os maiores na subárvore da direita. A busca é eficiente quando a árvore está equilibrada, mas se os dados forem inseridos em ordem a árvore vira uma lista e a busca passa a custar O(n).",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/olinda.html",
+    "titulo": "Olinda, patrimônio histórico da humanidade",
+    "conteudo": "Olinda Olinda tem um centro histórico colonial com igrejas, casarões coloridos e ladeiras, reconhecido como patrimônio da humanidade. O carnaval de Olinda é famoso pelos bonecos gigantes e pelo frevo tocado nas ruas. Do alto da Sé se vê o mar e a cidade de Recife. Recife · Voltar ao guia",
     "palavras_chave": [
-      "árvore",
-      "binária",
-      "busca",
-      "estrutura de dados"
+      "olinda",
+      "carnaval",
+      "bonecos gigantes",
+      "frevo"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:10"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   },
   {
     "id": 4,
-    "url": "https://exemplo.com.br/trie",
-    "titulo": "Trie: a árvore de prefixos",
-    "conteudo": "A Trie é uma árvore em que cada nó representa uma letra. Palavras que começam com o mesmo prefixo compartilham o mesmo caminho. É muito usada em autocompletar e corretores ortográficos. A desvantagem é o consumo de memória, já que cada nó pode ter muitos filhos.",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/porto-de-galinhas.html",
+    "titulo": "Porto de Galinhas e suas piscinas naturais",
+    "conteudo": "Porto de Galinhas Porto de Galinhas, no litoral sul de Pernambuco, é conhecida pelas piscinas naturais de água morna formadas entre os recifes na maré baixa. O passeio de jangada até as piscinas permite ver peixes coloridos de perto. A vila tem lojas de artesanato e restaurantes de frutos do mar. Outro paraíso: Fernando de Noronha · Voltar ao guia",
     "palavras_chave": [
-      "trie",
-      "árvore",
-      "prefixo",
-      "autocompletar"
+      "porto de galinhas",
+      "praia",
+      "piscinas naturais",
+      "jangada"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:15"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   },
   {
     "id": 5,
-    "url": "https://exemplo.com.br/arvore-b-mais",
-    "titulo": "Árvores B e B+ em bancos de dados",
-    "conteudo": "As árvores B e B+ são árvores de busca com muitos filhos por nó. Elas foram pensadas para armazenamento em disco, pois cada nó cabe em um bloco e a altura da árvore fica muito pequena. Bancos de dados relacionais e sistemas de arquivos usam a árvore B+ para seus índices, porque as folhas ficam ligadas e permitem percorrer intervalos rapidamente.",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/noronha.html",
+    "titulo": "Fernando de Noronha",
+    "conteudo": "Fernando de Noronha O arquipélago de Fernando de Noronha é um parque nacional marinho famoso pelo mergulho, pelos golfinhos rotadores e por praias como a Baía do Sancho. O número de visitantes é controlado para preservar a natureza da ilha, e é cobrada uma taxa de preservação ambiental. Porto de Galinhas · Voltar ao guia",
     "palavras_chave": [
-      "árvore b",
-      "b+",
-      "banco de dados",
-      "índice"
+      "noronha",
+      "ilha",
+      "mergulho",
+      "golfinhos",
+      "praia"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:20"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   },
   {
     "id": 6,
-    "url": "https://exemplo.com.br/como-funciona-um-buscador",
-    "titulo": "Como funciona um buscador na web",
-    "conteudo": "Um buscador web trabalha em três etapas: o crawler percorre a internet seguindo links e baixando páginas; o indexador separa o texto em palavras e monta um índice invertido; e o motor de busca recebe a consulta do usuário, encontra as páginas no índice e ordena os resultados por relevância.",
+    "url": "file:///home/luhanfelipe/Projetos/FaculdadeTSI/Algoritmos_Estruturas_de_Dados/buscador_web/dados/site_exemplo/culinaria.html",
+    "titulo": "Culinária pernambucana",
+    "conteudo": "Culinária pernambucana A culinária de Pernambuco mistura influências indígenas, africanas e portuguesas. O bolo de rolo, com camadas finas de massa e goiabada, é patrimônio cultural do estado. A cartola, sobremesa de banana com queijo, açúcar e canela, e a tapioca vendida nas ruas de Olinda e Recife também são muito tradicionais. Recife · Olinda · Voltar ao guia",
     "palavras_chave": [
-      "buscador",
-      "crawler",
-      "índice invertido",
-      "motor de busca"
+      "culinária",
+      "bolo de rolo",
+      "tapioca",
+      "cartola",
+      "comida"
     ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:25"
-  },
-  {
-    "id": 7,
-    "url": "https://exemplo.com.br/indice-invertido",
-    "titulo": "O que é um índice invertido",
-    "conteudo": "O índice invertido associa cada palavra à lista de documentos em que ela aparece, como o índice remissivo no final de um livro. É a estrutura central dos motores de busca. Guardar também a frequência de cada palavra permite calcular a relevância de cada documento para uma consulta.",
-    "palavras_chave": [
-      "índice invertido",
-      "busca",
-      "documentos"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:30"
-  },
-  {
-    "id": 8,
-    "url": "https://exemplo.com.br/tf-idf",
-    "titulo": "TF-IDF: medindo a relevância de uma palavra",
-    "conteudo": "TF-IDF é uma medida usada para ordenar resultados de busca. O TF, frequência do termo, indica quantas vezes a palavra aparece no documento. O IDF, frequência inversa nos documentos, dá mais peso a palavras raras. Multiplicando os dois, as páginas que mais falam de um assunto específico aparecem primeiro.",
-    "palavras_chave": [
-      "tf-idf",
-      "relevância",
-      "ranking"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:35"
-  },
-  {
-    "id": 9,
-    "url": "https://exemplo.com.br/web-crawler",
-    "titulo": "Web crawler: o robô que coleta páginas",
-    "conteudo": "Um web crawler, também chamado de spider ou robô, começa por uma URL inicial, baixa a página, extrai os links e coloca esses links em uma fila para visitar depois. Um bom crawler respeita o arquivo robots.txt, evita visitar a mesma página duas vezes e espera um intervalo entre as requisições para não sobrecarregar os servidores.",
-    "palavras_chave": [
-      "crawler",
-      "robô",
-      "robots.txt",
-      "links"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:40"
-  },
-  {
-    "id": 10,
-    "url": "https://exemplo.com.br/html-basico",
-    "titulo": "HTML básico: estrutura de uma página",
-    "conteudo": "HTML é a linguagem de marcação que define a estrutura das páginas web. Uma página tem as tags html, head e body. O título fica na tag title e os links são criados com a tag a e o atributo href. Os navegadores leem o HTML e montam a página que o usuário vê.",
-    "palavras_chave": [
-      "html",
-      "web",
-      "tags",
-      "página"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:45"
-  },
-  {
-    "id": 11,
-    "url": "https://exemplo.com.br/css-estilos",
-    "titulo": "CSS: dando estilo às páginas",
-    "conteudo": "CSS é a linguagem usada para definir cores, fontes, espaçamentos e o layout das páginas web. Com seletores escolhemos quais elementos HTML recebem cada estilo. Recursos como flexbox e grid facilitam criar páginas responsivas que funcionam no celular e no computador.",
-    "palavras_chave": [
-      "css",
-      "estilo",
-      "layout",
-      "web"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:50"
-  },
-  {
-    "id": 12,
-    "url": "https://exemplo.com.br/flask",
-    "titulo": "Flask: aplicações web com Python",
-    "conteudo": "Flask é um microframework para criar aplicações web em Python. Com poucas linhas definimos rotas que respondem às requisições do navegador e devolvem páginas HTML geradas a partir de templates. É uma ótima escolha para projetos pequenos e para aprender como a web funciona.",
-    "palavras_chave": [
-      "flask",
-      "python",
-      "web",
-      "servidor"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 09:55"
-  },
-  {
-    "id": 13,
-    "url": "https://exemplo.com.br/orientacao-a-objetos",
-    "titulo": "Orientação a objetos: classes, objetos e encapsulamento",
-    "conteudo": "Na programação orientada a objetos o sistema é dividido em classes, que juntam dados e comportamentos. Encapsulamento esconde os detalhes internos, herança permite reaproveitar código e polimorfismo deixa objetos diferentes responderem à mesma mensagem. Python, Java e C# são linguagens orientadas a objetos.",
-    "palavras_chave": [
-      "orientação a objetos",
-      "classes",
-      "encapsulamento",
-      "herança"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:00"
-  },
-  {
-    "id": 14,
-    "url": "https://exemplo.com.br/busca-binaria",
-    "titulo": "Busca binária em vetores ordenados",
-    "conteudo": "A busca binária encontra um valor em um vetor ordenado dividindo o intervalo pela metade a cada passo. Se o valor procurado é menor que o elemento do meio, continua pela metade esquerda; se é maior, pela direita. O custo é O(log n), a mesma ideia usada para descer em uma árvore binária de busca.",
-    "palavras_chave": [
-      "busca binária",
-      "algoritmo",
-      "log n"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:05"
-  },
-  {
-    "id": 15,
-    "url": "https://exemplo.com.br/algoritmos-de-ordenacao",
-    "titulo": "Algoritmos de ordenação",
-    "conteudo": "Ordenar dados é uma das tarefas mais comuns da computação. Bubble sort e insertion sort são simples, mas custam O(n²). Merge sort, quicksort e heapsort custam O(n log n). Percorrer uma árvore binária de busca em ordem também devolve os elementos ordenados.",
-    "palavras_chave": [
-      "ordenação",
-      "algoritmo",
-      "merge sort",
-      "quicksort"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:10"
-  },
-  {
-    "id": 16,
-    "url": "https://exemplo.com.br/complexidade",
-    "titulo": "Complexidade de algoritmos e notação Big O",
-    "conteudo": "A notação Big O descreve como o tempo de um algoritmo cresce conforme a entrada aumenta. O(1) é constante, O(log n) é logarítmico, O(n) é linear e O(n²) é quadrático. Estruturas balanceadas, como a árvore AVL, garantem operações logarítmicas mesmo no pior caso.",
-    "palavras_chave": [
-      "complexidade",
-      "big o",
-      "algoritmo",
-      "desempenho"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:15"
-  },
-  {
-    "id": 17,
-    "url": "https://exemplo.com.br/rubro-negra",
-    "titulo": "Árvore rubro-negra",
-    "conteudo": "A árvore rubro-negra é outra árvore binária de busca balanceada. Cada nó é colorido de vermelho ou preto e regras sobre essas cores mantêm a altura controlada. Ela faz menos rotações que a AVL nas inserções, mas a AVL é mais equilibrada e por isso costuma ser mais rápida em buscas.",
-    "palavras_chave": [
-      "rubro-negra",
-      "árvore",
-      "balanceamento"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:20"
-  },
-  {
-    "id": 18,
-    "url": "https://exemplo.com.br/ifpe",
-    "titulo": "Instituto Federal de Pernambuco",
-    "conteudo": "O IFPE oferece cursos técnicos, de graduação e de pós-graduação em vários campi de Pernambuco. Na área de informática há cursos de análise e desenvolvimento de sistemas, com disciplinas de algoritmos, estruturas de dados, banco de dados e programação para a web.",
-    "palavras_chave": [
-      "ifpe",
-      "pernambuco",
-      "educação",
-      "cursos"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:25"
-  },
-  {
-    "id": 19,
-    "url": "https://exemplo.com.br/estruturas-de-dados",
-    "titulo": "Estruturas de dados: pilha, fila, lista e árvore",
-    "conteudo": "Estruturas de dados organizam as informações na memória para que possam ser usadas de forma eficiente. A pilha segue a regra último a entrar, primeiro a sair; a fila segue primeiro a entrar, primeiro a sair. Listas ligadas usam ponteiros entre os elementos, e as árvores organizam os dados de forma hierárquica.",
-    "palavras_chave": [
-      "estrutura de dados",
-      "pilha",
-      "fila",
-      "lista",
-      "árvore"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:30"
-  },
-  {
-    "id": 20,
-    "url": "https://exemplo.com.br/json",
-    "titulo": "JSON: formato para guardar e trocar dados",
-    "conteudo": "JSON é um formato de texto para representar dados com objetos, listas, textos e números. É fácil de ler por pessoas e por programas, por isso é usado em APIs web e para salvar configurações e dados em arquivos. Em Python, o módulo json converte dicionários em texto e vice-versa.",
-    "palavras_chave": [
-      "json",
-      "dados",
-      "arquivo",
-      "python"
-    ],
-    "origem": "manual",
-    "data_indexacao": "10/11/2026 10:35"
-  },
-  {
-    "id": 21,
-    "url": "https://www.lego.com.br/",
-    "titulo": "LEGO - um mundo de montar",
-    "conteudo": "teste",
-    "palavras_chave": [
-      "lego - montar - bloquinhos"
-    ],
-    "origem": "manual",
-    "data_indexacao": "13/11/2026 10:04"
+    "origem": "crawler",
+    "data_indexacao": "14/11/2026 22:07"
   }
 ]
